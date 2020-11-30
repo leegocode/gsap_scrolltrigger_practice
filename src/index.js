@@ -5,25 +5,26 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
-// gsap.to(".box",{
-//   scrollTrigger: {
-//     trigger: '.box',
-//     pin: true,
-//     start:"top 75%",
-//     end:"bottom 25%"
-//   },
-//   x:400
-// })
+gsap.defaults({ease:"none", duration:2})
 
-
-// let tl = gsap.timeline({
-//   scrollTrigger: {
-//     trigger:'.dark',
-//     start:"top 75%",
-//     end:"bottom 25%",
-//     toggleActions:"restart complete reverse reset"
-//   }
-// })
-//
-// tl.from("#green_section",{ x: 1000,y: 300, opacity:0, duration: .7})
-// .from(".content", {y:500, opacity: 0, duration: .5}, "-=1")
+let tl = gsap.timeline({scrollTrigger:{
+	trigger:"section",
+  scrub: true,
+  pin: true,
+  start: "top 0px", // the default values
+  end: "+=300",
+  markers:true,
+	toggleActions: "play none none reverse"
+}})
+.to("#sixth", {y:-700})
+.to("#fifth", {y:-500}, 0)
+.to("#fourth", {y:-400}, 0)
+.to("#third", {y:-300}, 0)
+.to("#second", {y:-200}, 0)
+.to("#first", {y:-100}, 0)
+.to('.content, .blur',{ top: '0%' }, 0 )
+.to('.title, nav, .footer-wrapper',{ y: -1000 }, 0 )
+.from('.one',{ top:'300px', opacity: 0 },0)
+.from('.two',{ top:'-300px', opacity: 0 }, 0)
+.from('.three',{ top:'300px', opacity: 0 }, 0)
+.from('.four',{ top:'-300px', opacity: 0 }, 0)
